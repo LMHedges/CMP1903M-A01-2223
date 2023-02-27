@@ -18,7 +18,7 @@ namespace CMP1903M_A01_2223
             {
                 for (int j = 1; j < 14; j++)
                 {
-                    new Card { Suit = i, Value = j };
+                    pack.Add(new Card { Suit = i, Value = j });
                 }
             }
         }
@@ -34,7 +34,22 @@ namespace CMP1903M_A01_2223
                     return true;
                 case 2:
                     Console.WriteLine("Riffle shuffle");
-
+                    Card[] pile1 = new Card[26];
+                    Card[] pile2 = new Card[26];
+                    List<Card> temp_pack = new List<Card>();
+                    for (int i = 0; i < 26; i++)
+                    {
+                        pile1[i] = pack[i];
+                        pile2[i] = pack[i+26];
+                    }
+                    int count = 0;
+                    while(count < 26)
+                    {
+                        temp_pack.Add(pile1[count]);
+                        temp_pack.Add(pile2[count]);
+                        count++;
+                    }
+                    pack = temp_pack;
                     return true;
                 case 3:
                     Console.WriteLine("No shuffle");
