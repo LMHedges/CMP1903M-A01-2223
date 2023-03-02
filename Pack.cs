@@ -12,7 +12,7 @@ namespace CMP1903M_A01_2223
 
         public Pack()
         {
-            //Initialise the card pack here
+            //Creates the pack
             pack = new List<Card>();
             for (int i = 1; i < 5; i++)
             {
@@ -30,14 +30,23 @@ namespace CMP1903M_A01_2223
             {
                 case 1:
                     Console.WriteLine("Fisher-Yates shuffle");
-
+                    Random R = new Random();
+                    int k;
+                    Card temp;
+                    for(int i = pack.Count - 1; i > 0; i--)
+                    {
+                        k = R.Next(i + 1);
+                        temp = pack[i];
+                        pack[i] = pack[k];
+                        pack[k] = temp;
+                    }
                     return true;
                 case 2:
                     Console.WriteLine("Riffle shuffle");
                     Card[] pile1 = new Card[26];
                     Card[] pile2 = new Card[26];
                     List<Card> temp_pack = new List<Card>();
-                    for (int i = 0; i < 26; i++)
+                    for (int i = 0; i < 26; i++) //splits pack in two
                     {
                         pile1[i] = pack[i];
                         pile2[i] = pack[i+26];
@@ -65,8 +74,9 @@ namespace CMP1903M_A01_2223
         public static List<Card> dealCard(int amount)
         {
             //Deals the number of cards specified by 'amount'
-            List<Card> delt = (List<Card>)pack.Take(amount);
-            return delt;
+            IEnumerable<Card> enumerable = pack.Take(amount);
+            List<Card> cards = enumerable.ToList();
+            return cards;
         }
     }
 }
