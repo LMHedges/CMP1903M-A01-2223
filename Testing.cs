@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
-    class Testing
+    class Testing //(new) class to test the methods
     {
-        private static string card_type(Card card)
+        private static string card_type(Card card) //(new) method to return the card's name
         {
             string suit = string.Empty;
             string value;
@@ -49,7 +49,7 @@ namespace CMP1903M_A01_2223
             card_name = value + " of " + suit;
             return card_name;
         }
-        private static bool shuffle()
+        private static bool shuffle() //(new0 method to find out which shuffle to use
         {
             int input;
             Console.WriteLine("1. Fisher-Yates Shuffle");
@@ -65,7 +65,7 @@ namespace CMP1903M_A01_2223
             }
             return Pack.shuffleCardPack(input); //Returns true if valid input and shuffle completed
         }
-        private static bool deal()
+        private static bool deal() //(new) method to see how many cards to deal
         {
             int input;
             Console.WriteLine("How many cards do you wont delt?");
